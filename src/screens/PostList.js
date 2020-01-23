@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, ActivityIndicator, FlatList, View } from 'react-native';
+import {StyleSheet, ActivityIndicator, FlatList, View, Text } from 'react-native';
 import Post from '../components/Post';
 export default class PostList extends React.Component {
   static navigationOptions = {
@@ -12,30 +12,39 @@ export default class PostList extends React.Component {
       fontWeight: 'bold',
     },
   };
-  _isMounted = false;
     constructor(){
+      _isMounted = false;
         super();
         this.state = {
-          items:[]
+          items:[],
+          isLoading: true
         }
     }
     componentDidMount(){
         this._isMounted = true;
+        // this.setState({isLoading: !this.isLoading})
         this._get('http://flexi-post.herokuapp.com/api/articles').then(
           json => {
-            this.setState({items: json.data})
+            this.setState({items: json.data, isLoading: !this.state.isLoading})
           }
         )
     }
     componentWillUnmount() {
       this._isMounted = false;
     }
-  
     render(){
+      // console.log(!this.state.items.length +"##"+ this.state.isLoading +"##"+this.state.items.length);
+        if(this.state.isLoading){
+          return(
+            <View style={styles.loader}>
+              <ActivityIndicator size="large" color="#f4511e"/>
+            </View>
+          )
+        }
         if(this.state.items.length === 0){
           return(
             <View style={styles.loader}>
-              <ActivityIndicator size="large"/>
+              <Text>No data</Text>
             </View>
           )
         }

@@ -12,11 +12,12 @@ export default class PostDetail extends React.Component {
       fontWeight: 'bold',
     },
   };
-  _isMounted = false;
     constructor(){
+      _isMounted = false;
         super();
         this.state = {
-          items:[]
+          items:[],
+          isLoading: true
         }
     }
     // componentDidMount() {
@@ -42,18 +43,25 @@ export default class PostDetail extends React.Component {
       const {params} = this.props.navigation.state;
        this._get('http://flexi-post.herokuapp.com/api/articles/'+params.id).then(
          json => {
-           this.setState({items: json.data})
+           this.setState({items: json.data, isLoading: !this.state.isLoading})
          }
        )
     }
-    componentWillUnmount() {
+    componentWillUnmount(){
       this._isMounted = false;
     }
     render(){
+        if(this.state.isLoading){
+          return(
+            <View style={styles.loader}>
+              <ActivityIndicator size="large" color="#f4511e"/>
+            </View>
+          )
+        }
         if(this.state.items.length === 0){
           return(
             <View style={styles.loader}>
-              <ActivityIndicator size="large"/>
+              <Text>No data</Text>
             </View>
           )
         }
