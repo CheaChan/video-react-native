@@ -14,10 +14,10 @@ class PostDetail  extends React.Component{
             allowsInlineMediaPlayback={true}
             allowsFullscreenVideo={true}
             javaScriptEnabled={true}
-            domStorageEnabled={true}
-            mediaPlaybackRequiresUserAction = {true}
-            scrolling={true}
-            allowTransparency={true}
+            // domStorageEnabled={true}
+            // mediaPlaybackRequiresUserAction = {true}
+            // scrolling={true}
+            // allowTransparency={true}
             source={{ uri: Embed }}
           />
           {/* <Image style={styles.postImage} source={{uri: this.props.item.profiles.large}}></Image> */}

@@ -81,7 +81,7 @@ export default class PostDetail extends React.Component {
   }
   const styles = StyleSheet.create({
     container: {
-        marginTop: 10,
+        marginTop: 5,
         backgroundColor: '#f5f5f0',
     },
     loader: {

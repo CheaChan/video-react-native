@@ -15,13 +15,13 @@ class Post  extends React.Component{
             allowsInlineMediaPlayback={true}
             allowsFullscreenVideo={true}
             javaScriptEnabled={true}
-            domStorageEnabled={true}
-            mediaPlaybackRequiresUserAction = {true}
-            scrolling={true}
-            allowTransparency={true}
-            showinfo={false}
-            controls={0}
-            modestbranding={true}
+            // domStorageEnabled={true}
+            // mediaPlaybackRequiresUserAction = {true}
+            // scrolling={true}
+            // allowTransparency={true}
+            // showinfo={false}
+            // controls={0}
+            // modestbranding={true}
             source={{ uri: Embed }}
           />
           {/* <Image style={styles.postImage} source={{uri: this.props.item.profiles.large}}></Image> */}
