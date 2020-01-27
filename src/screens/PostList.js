@@ -79,7 +79,6 @@ export default class PostList extends React.Component {
       </TouchableOpacity>  )
     }
     handleLoadMore = () => {
-      console.log('handleLoadMore');
       this.setState(
         {
           isLoading: true
@@ -88,7 +87,6 @@ export default class PostList extends React.Component {
       )
     }
     renderFooter = () => {
-      console.log('renderFooter');
       return(
         this.state.isLoading ?
         <View style={styles.footerLoader}>
